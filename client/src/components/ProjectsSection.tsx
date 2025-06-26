@@ -149,9 +149,10 @@ export default function ProjectsSection() {
                               <div className={`w-12 h-12 ${project.color} rounded-xl flex items-center justify-center`}>
                                 <IconComponent className="text-white w-6 h-6" />
                               </div>
-                              <div>
+                              <div className="flex-1">
                                 <h3 className="text-xl font-poppins font-semibold text-[var(--charcoal)]">{project.title}</h3>
                                 <p className="text-[var(--energy-orange)] font-medium">{project.client}</p>
+                                <p className="text-sm text-[var(--medium-gray)]">{project.year}</p>
                               </div>
                             </div>
                             <p className="text-[var(--medium-gray)] mb-4">{project.description}</p>
@@ -184,9 +185,10 @@ export default function ProjectsSection() {
                               <div className={`w-12 h-12 ${project.color} rounded-xl flex items-center justify-center`}>
                                 <IconComponent className="text-white w-6 h-6" />
                               </div>
-                              <div>
+                              <div className="flex-1">
                                 <h3 className="text-xl font-poppins font-semibold text-[var(--charcoal)]">{project.title}</h3>
                                 <p className="text-[var(--energy-orange)] font-medium">{project.client}</p>
+                                <p className="text-sm text-[var(--medium-gray)]">{project.year}</p>
                               </div>
                             </div>
                             <p className="text-[var(--medium-gray)] mb-4">{project.description}</p>
