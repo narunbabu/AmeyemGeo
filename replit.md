@@ -110,8 +110,19 @@ AMEYEM Geo Solutions is a comprehensive web application built as a modern full-s
 
 ## Changelog
 
-Changelog:
-- June 26, 2025. Initial setup
+Recent Changes:
+- June 26, 2025: Initial setup and website foundation
+- June 26, 2025: Updated with comprehensive project portfolio including:
+  * Well Log Splicing Tool for Cairn India (2018)
+  * VES Interpretation for Borewell Engineering (2018-Ongoing)
+  * Automatic Seismic Digitization for EyeCube Solutions (2017)
+  * Quick Seismic Interpretation for Bhugarbho (2018)
+  * ASCII to SEGY Conversion for R2V Technologies (2016-2017)
+  * ML Petrophysical Log Generation (2018)
+  * Ongoing services for Selan Oil Exploration and Antelopus Energy
+- Enhanced trust bar with major client logos and industry representation
+- Added project timeline with year-based organization
+- Improved project descriptions with accurate technical details and metrics
 
 ## User Preferences
 
