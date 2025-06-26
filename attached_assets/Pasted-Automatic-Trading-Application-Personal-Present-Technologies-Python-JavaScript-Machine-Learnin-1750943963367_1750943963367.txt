@@ -1,0 +1,164 @@
+Automatic Trading Application (Personal-Present)
+Technologies:
+Python, JavaScript ,Machine Learning (ANN, LSTM), Jupyter Notebook,TensorFlow 2.0, SKlearn and Selineum
+Critical aspects:
+Recording the data, Cleaning the data, Preparation of features, Training ML models, Live recording, process and predict when to buy and execute decisions and run the investment cycle using the online stock broking service Provider
+Key Processes:
+Data, feature preparation and training the ML model: 
+Collected minute data is processed and prepared select 45 features at every decision point. 1.2-2.0 millions of these samples are taken for training, validation and testing. The ML model is being updated weekly.
+Live Execution:
+A JavaScript client is written to record Webpack data, which arrives continuously for all the stocks requested for. With this continuous data OHLC is prepared for every minute and the same is stored in a folder as csv file.
+Then Jupyter notebook reads the minute OHLC file for around 1500 stock and process it with set rules and come out with suggestions on buy or sell stocks at that minute
+Another Jupyter notebook running parallelly takes these decisions and implements those decision using the Stock broking API and does the trading
+Outcome:
+Running successfully with 0.17% profit after brokerage+taxes(0.1%) on each investment decision.
+
+Well Log Splicing (Duration: 1.5  month, Year 2018)
+For Cairn India, made Well Log Splicing Tool. The tool is developed in python, where user will get spliced log automatically when he selects the folder containing las or dlis files of different runs and suits. User can select what are the process need to be run ahead of starting the splicing process
+ “Automatic well log splicing application”, which was highly appreciated by user community of Cairn Vedanta.
+•	Module:1 
+•	Resolve filenames and log names ambiguity
+•	Read all available logs from all wells
+•	Analyze las/dlis file names and categorize them as various types of runs
+•	Find the file names to be used in splicing
+•	Read the nomenclature database and classify them different log runs
+•	Use the dictionary to identify which name in las file is mapped to which entry in dictionary
+•	Now log name ambiguity and useful files ambiguity is resolved
+•	
+•	Module 2a:
+•	Get required logs and bring on to same scale
+•	Get the interested logs listed above
+•	Select the logs with MD
+•	See the sampling interval in various files
+•	Look for the logs to be resampled on to a large sampling interval
+•	
+•	Module 2b:
+•	Depth matching- Vertical and lateral corrections 
+•	Take GR of log suite run-1 as depth reference. See for lateral corrections on it
+•	Move to suite run-2 GR log. Depth match it with run-1 GR log and make vertical correction for all logs
+•	Correlate GR log with other logs and do corrections
+•	Repeat it for other runs
+•	
+•	Module 2c:
+•	Baseline shift and de-spiking
+•	Take GR of log suite run-1 as depth reference. See for lateral corrections on it
+•	Move to suite run-2 GR log. Depth match it with run-1 GR log and make vertical correction for all logs
+•	Correlate GR log with other logs and do corrections
+•	Repeat it for other runs
+•	
+•	Module 2d:
+•	Splicing and export
+•	Now logs are in a position to be stitched together.
+•	Edit the log headers
+•	Export with desired settings
+
+
+
+
+Module:1 
+Read all available logs from all wells, Analyze file names and categorize them as various types of runs
+Find the file names to be used in splicing & classify them different log runs
+Use the dictionary to identify which name in file is mapped to which entry in dictionary
+Module 2a: Get required logs and bring on to same scale & Look for the logs to be resampled on to a large sampling interval
+Module 2b: Depth matching- Vertical and lateral corrections 
+Module 2c: Baseline shift and de-spiking
+Module 2d: Splicing and export: logs stitched together, Edit the log headers & Export with desired settings
+
+
+ 
+Pseudo Code:
+Class LogMechine():
+Def filter_las():
+Req_Log_dict < {GR:[],Res:[],Sonic:[],…. }
+Drop log if not in Req_Log_dict 
+	Def splice(las2):
+	self.log
+Class Corrections():
+	def Vertical_correction(las1,las2):
+		 depth_highest_corrln=correlate (las1.GR,las2.GR): 
+		shift all logs of las2
+		 return bulkshifted_las2.log
+	def Lateral_correction(las):
+	`	for all logs of las1:
+		 	depth_highest_corrln=correlate (las1.GR,las1.log): 
+			shift las1.log
+		 return corrected_las
+	def globalBLShift(las1,las2):
+		for log1,log2 in zip(las1.logs, las2.logs ):
+			baselineShift(log1,log2)
+	Def baselineShift(las1.log,las2.log):		
+		return corrected las1.log
+	def correlate (las1.log,las2.log): 
+		return depth of highest correlation
+Student Management and training portal- For Ameyem Skill Labs
+•	Student
+•	Student registers and interact on web portal with guides/teachers
+•	S/He with get opportunity to learn current technologies and programming languages
+•	Opportunity to get internship in reputed companies
+•	Early settlement in life
+•	Lecturer
+•	Build tasks/courses for students, permanent record on how they approached and timely improved
+•	Easily assess how student is performing
+•	Decide whether student need more interaction or counselling
+•	College Management
+•	Bundle of statistics on performance of various classes and students
+•	Ground reports on how their students are performing
+•	Online presence and improved intake strategy
+•	Ameyem
+•	Build tasks/courses for students, permanent record on how they approached and timely improved
+•	Good relations with institute
+•	Opportunity to prove worthiness as a start-up
+•	Convince promoters to increase investment
+Creation of Task
+This is the most important module of ASDP. How teacher synthesize a task whether it is simple task, assignment, presentation or a workshop and maximum credits student and a reviewer can get. Will be decided here.
+Once student attempts and send it to the reviewer, reviewer checks and give rating how well student has done it. Depending on the rating and the credits assigned to this task marks will be calculated
+If not satisfied reviewer can ask student to re-do it.
+ 
+
+
+Vertical Electrical Sounding Interpretation (3 districts or 200 VES locations completed, 2018-Ongoing)
+For Borewell Engineering Rock Drill Industries, providing Vertical Electrical Sounding Interpretation and report preparation for ground water exploration in Uttar Pradesh and Madhya Pradesh. A toll has been developed for interpretation and vertical cross section in Python.
+
+Automatic Digitization of Seismic shot gather scans (2017)
+For EyeCube solutions built a tool for Automatic Digitization of hard copy scan of Seismic shot gathers. Where it uses Machine Learning to track the signal on the image.
+Technologies:
+Matlab, Machine Learning, CV2
+Critical aspects:
+Image processing, Identification of start of signal line, and identification of next point on the next row of pixels with machine learning
+Key Processes:
+Processing the Image:
+Every image contains the long signals of 24 arrays. At places neighbouring signal merge and it becomes complicated to predict signal. There is noise on the image that are reduced with image filtering.
+Feature preparation and training the ML model: 
+A ML model devised by training with manually picking few signals on images.
+Applied the model to pick the signals on lot of images, by searching on next adjacent row. The pixels to be chosen on next row is predefined. It is- equal number of pixels on both sides of current predicted point. The ML model predict the placement of next successful pixel relative to current pixel.
+Outcome: 
+Matlab executable application which can run on any Windows machine and digitize the seismic signals
+ 
+Seismic Interpretation  (3 days, 2018)
+For Bhugarbho provided Quick Seismic Interpretation service when they were evaluating small fields. It was quick but fruitful work where we have got chance to evaluate close to 5 blocks.
+
+ASCII to segy/segd conversion (2016-2017)
+For R2V Tech, provided ASCII 2 segy conversion of digitized data- 200 files converted
+
+Petrophisical logs from raw well logs using Machine Learning (POC-2018)
+For an individual generated petrophisical logs from raw well logs using Machine Learning.
+
+Prediction of Oil producing zones in an Oil Field (Kharsang-India, 2016-17)
+Technologies:
+Matlab, Machine Learning (Classification & Decision trees)
+Critical aspects:
+Cleaning and preparation of data, Training the model
+Key Processes:
+Data, feature preparation and training the ML model: 
+Well logs are electronic logs which record a continuous signal against the formation in a well. Usually producers record 8 to 10 useful logs which record different kind of responses from the formation (Resistivity, Gamma ray log, Neutron porosity, electron density, Static Potential etc.). This data usually comes one at each foot.
+There are problems in the data, i.e, like missing data, erroneous data etc. Processed to handle these problems.
+The outcome against each sample would the Oil saturation and produceability.
+Prepared around 700 samples in a field, each representing 1 meter.
+Machine Learning model:
+Two models had been tested, one single classification tree and the other is bagged decision tree. The bagged decision tree gave good result
+Outcome:
+Client was provided with new zones which can add reserves around 2MMBBL
+
+ 
+ 
+

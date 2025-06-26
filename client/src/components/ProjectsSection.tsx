@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Wrench, Droplets, Bot, Clock, TrendingUp, Eye, Gauge, MapPin, BarChart, Rocket } from "lucide-react";
+import { Wrench, Droplets, Bot, Clock, TrendingUp, Eye, Gauge, MapPin, BarChart, Rocket, Code, Brain } from "lucide-react";
 
 export default function ProjectsSection() {
   const scrollToSection = (sectionId: string) => {
@@ -15,37 +15,105 @@ export default function ProjectsSection() {
       icon: Wrench,
       title: "Well Log Splicing Tool",
       client: "Cairn India",
-      description: "Developed a Python-based tool to automatically splice well logs from folder inputs, reducing manual processing time by 85%.",
+      description: "Developed an 'Automatic well log splicing application' in Python with modules for file analysis, depth matching, baseline corrections, and automated splicing. Highly appreciated by Cairn Vedanta user community.",
       metrics: [
-        { icon: Clock, text: "3 months saved annually" },
-        { icon: TrendingUp, text: "85% efficiency gain" }
+        { icon: Clock, text: "1.5 month development" },
+        { icon: TrendingUp, text: "Fully automated process" }
       ],
       color: "bg-[var(--ocean-blue)]",
-      side: "left"
+      side: "left",
+      year: "2018"
     },
     {
       icon: Droplets,
-      title: "VES Interpretation",
+      title: "VES Interpretation & Reporting",
       client: "Borewell Engineering Rock Drill Industries",
-      description: "Ongoing interpretation and reporting for groundwater exploration across 200+ locations in UP and MP states.",
+      description: "Providing Vertical Electrical Sounding interpretation and report preparation for groundwater exploration across 3 districts (200+ VES locations) in Uttar Pradesh and Madhya Pradesh with custom Python tools.",
       metrics: [
-        { icon: MapPin, text: "200+ locations" },
-        { icon: BarChart, text: "95% accuracy rate" }
+        { icon: MapPin, text: "200+ VES locations" },
+        { icon: BarChart, text: "3 districts covered" }
       ],
       color: "bg-[var(--energy-orange)]",
-      side: "right"
+      side: "right",
+      year: "2018-Ongoing"
     },
     {
       icon: Bot,
       title: "Automatic Seismic Digitization",
       client: "EyeCube Solutions",
-      description: "Built an ML tool to automatically digitize signals from hard copy scans of seismic shot gathers using advanced computer vision.",
+      description: "Built a machine learning tool for automatic digitization of hard copy seismic shot gather scans, using advanced image processing and ML signal tracking algorithms.",
       metrics: [
-        { icon: Eye, text: "Computer vision" },
-        { icon: Gauge, text: "90% faster processing" }
+        { icon: Eye, text: "ML signal tracking" },
+        { icon: Gauge, text: "24-array processing" }
       ],
       color: "bg-green-500",
-      side: "left"
+      side: "left",
+      year: "2017"
+    },
+    {
+      icon: TrendingUp,
+      title: "Quick Seismic Interpretation",
+      client: "Bhugarbho Geo Sciences",
+      description: "Provided rapid seismic interpretation services for small field evaluation, successfully analyzing close to 5 blocks within tight timelines.",
+      metrics: [
+        { icon: Clock, text: "3-day turnaround" },
+        { icon: BarChart, text: "5 blocks evaluated" }
+      ],
+      color: "bg-purple-500",
+      side: "right",
+      year: "2018"
+    },
+    {
+      icon: Code,
+      title: "ASCII to SEGY Conversion",
+      client: "R2V Technologies",
+      description: "Provided comprehensive data conversion services, converting 200 digitized ASCII files to industry-standard SEGY/SEGD format for seismic data processing.",
+      metrics: [
+        { icon: BarChart, text: "200 files converted" },
+        { icon: TrendingUp, text: "Industry standard format" }
+      ],
+      color: "bg-indigo-500",
+      side: "left",
+      year: "2016-2017"
+    },
+    {
+      icon: Brain,
+      title: "ML Petrophysical Log Generation",
+      client: "Individual Client",
+      description: "Developed machine learning models to generate petrophysical logs from raw well logs, demonstrating AI capabilities in log interpretation and analysis.",
+      metrics: [
+        { icon: Brain, text: "ML algorithms" },
+        { icon: Eye, text: "POC completion" }
+      ],
+      color: "bg-teal-500",
+      side: "right",
+      year: "2018"
+    },
+    {
+      icon: TrendingUp,
+      title: "Geophysical Interpretation Services",
+      client: "Selan Oil Exploration",
+      description: "Provided comprehensive seismic interpretation and geophysical analysis services for oil exploration projects, leveraging advanced interpretation techniques.",
+      metrics: [
+        { icon: Eye, text: "Seismic interpretation" },
+        { icon: BarChart, text: "Exploration analysis" }
+      ],
+      color: "bg-orange-500",
+      side: "left",
+      year: "Ongoing"
+    },
+    {
+      icon: Gauge,
+      title: "Geophysical Services",
+      client: "Antelopus Energy",
+      description: "Delivered specialized geophysical interpretation and analysis services supporting energy exploration and development activities.",
+      metrics: [
+        { icon: TrendingUp, text: "Energy sector" },
+        { icon: Eye, text: "Specialized analysis" }
+      ],
+      color: "bg-red-500",
+      side: "right",
+      year: "Ongoing"
     }
   ];
 
