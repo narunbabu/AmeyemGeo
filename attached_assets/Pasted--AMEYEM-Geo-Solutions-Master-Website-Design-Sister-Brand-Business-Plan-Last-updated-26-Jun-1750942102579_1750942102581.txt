@@ -1,0 +1,158 @@
+# AMEYEM Geo Solutions — Master Website Design & Sister‑Brand Business Plan
+
+*Last updated: 26 June 2025*
+
+---
+
+## 1 • Corporate Website (ameyem.com) — Polished Design Blueprint
+
+### 1.1 Primary Goals
+
+1. **Demonstrate technical leadership** in Oil & Gas geoscience software, AI/ML services, and consulting.
+2. Provide **clear conversion paths** for (a) B2B corporate decision‑makers and (b) local parents seeking tech education for children.
+3. Act as the **umbrella hub** that routes visitors to sister brands (StoryLikho, Chess99, Sambandhalu).
+
+### 1.2 Visual & UX Guidelines
+
+| Element           | Recommendation                                                                                                                                                                      |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Style**         | Clean, modern, professional. White & charcoal base; accent with deep ocean blue (#004a7c) and energy orange (#ff7a00). Rounded‑edge cards, light drop‑shadows, generous whitespace. |
+| **Fonts**         | Headings – *Poppins SemiBold*; Body – *Inter Regular*.                                                                                                                              |
+| **Imagery**       | High‑resolution seismic sections, code‑snippet overlays, classroom photos for Kids section. Use subtle animated SVG waves in hero background.                                       |
+| **Accessibility** | WCAG 2.2 AA contrast, keyboard‑navigable menus, alt‑text.                                                                                                                           |
+| **Performance**   | Serve static assets from CDN, lazy‑load images, implement defer/async for scripts.                                                                                                  |
+
+### 1.3 Top‑Level Sitemap & Wireframe Guide
+
+1. **Home**
+
+   * Hero (problem‑focused headline + 2 CTAs)
+   * Trust Bar (client logos & quick metrics)
+   * Core Services trio
+   * Recent Case Study teaser
+   * Kids Courses micro‑site card
+   * Latest Blog thumbnails
+   * Global footer (company + social + quick links)
+2. **Solutions** *(mega‑menu)*
+
+   * **AutoSplicing Tool** (product page)
+   * **AI & ML for Geosciences** (service page)
+   * **Geophysical Consulting** (service page)
+3. **Case Studies** (filter by software | consulting | ML)
+4. **Ameyem for Kids** (colourful sub‑site under `/kids`)
+5. **About Us** (company story + leadership profile)
+6. **Resources** (blog / papers / downloads)
+7. **Contact** (multi‑step form + Razorpay‑enabled demo request)
+
+> **Micro‑interaction Ideas:**
+> • Scroll‑triggered number counters for man‑hours saved.
+> • Hover‑card reveal for service icons.
+> • Sticky header that shrinks on scroll.
+
+### 1.4 Critical Component Details
+
+* **Hero Copy**
+  *Accelerating Geoscience with Intelligent Software & Expert Insight*
+  “Leveraging AI/ML and 17+ years of field experience to maximise reservoir value.”
+* **Primary CTA** → “Explore O\&G Solutions”
+  **Secondary CTA** → “Tech Courses for Kids”
+* **Case Study Layout**
+  Problem → Solution → Quantified Outcome → Visual Evidence → Testimonial.
+* **Kids Sub‑site**
+  Uses brighter palette (#2979ff / #00c853). Fun icons, course cards with age badges, Razorpay checkout button, WhatsApp quick‑chat.
+
+---
+
+## 2 • Sister Sites & Cross‑Linking Strategy
+
+| Domain                             | Purpose                                                      | Current Status | Planned Launch | Cross‑link from ameyem.com                             |
+| ---------------------------------- | ------------------------------------------------------------ | -------------- | -------------- | ------------------------------------------------------ |
+| **storylikho.com / .in**           | Freemium AI writing studio (novels, articles)                | Active (dev)   |  Q4 2025       | Footer + Resources banner "Write with AI — StoryLikho" |
+| **chittibadi.com / .in / .online** | Telugu‑first social learning & community platform            | Active         | Beta Q1 2026   | Blog sidebar ad; Kids section link                     |
+| **sambandhalu.com / .in**          | Matrimonial & family networking portal                       | Active         | Alpha Q2 2026  | Minimal footer reference only (distinct audience)      |
+| **scribosync.com**                 | SaaS document versioning & collaborative editing             | Reserved       | TBD            | Solutions page: “Coming Soon”                          |
+| **chess99.com**                    | Browser‑based chess & tactics trainer with premium analytics | Reserved       | Q3 2026        | Kids sub‑site promo “Learn Chess Online”               |
+
+All micro‑brands share the same **central login/session service** and billing backend (Razorpay subscriptions + credit top‑ups) to reduce maintenance overhead.
+
+---
+
+## 3 • Integrated Business Plan (Three‑Year Horizon)
+
+### 3.1 Executive Summary
+
+Ameyem Geo Solutions Pvt Ltd (“Ameyem”) delivers niche geoscience software and AI consulting while incubating consumer‑facing EdTech and Content SaaS products. The umbrella model maximises IP reuse and cross‑domain data expertise.
+
+### 3.2 Market Analysis
+
+| Segment                         | TAM      | Pain Points                            | Competitor Gap                                           | Ameyem Advantage                                            |
+| ------------------------------- | -------- | -------------------------------------- | -------------------------------------------------------- | ----------------------------------------------------------- |
+| O\&G Digital Transformation     |  USD 4 B | Manual log processing, low ML adoption | Big vendors (Schlumberger) too costly for midsize fields | Agile custom tools, field‑tested geophysicist founder       |
+| Technical Writing SaaS          |  USD 2 B | Idea‑to‑draft friction                 | Generic AI writers lack long‑form structure              | Geoscience‑grade semantic models, credit + subscription mix |
+| Kids STEM Education (Hyderabad) | ₹ 500 Cr | Quality curriculum, trust              | Tuition centres focus on academics, not tech             | IIT‑educated mentor, small‑batch hands‑on courses           |
+
+### 3.3 Products & Revenue Streams
+
+1. **AutoSplicing Tool** — one‑off licence + annual maintenance; pay‑per‑well model.
+2. **Geoscience AI Consulting** — project fees + success‑fee kicker (e.g. % uplift on production).
+3. **StoryLikho** — freemium (10 k words/month) then ₹ 499/mo or pay‑as‑you‑go credits.
+4. **Chittibadi** — ad‑supported community, premium creator tools ₹ 99/mo.
+5. **Kids Courses** — ₹ 12 000 per 12‑week cohort (max 5 students).
+6. **Chess99** — free play, premium analytics ₹ 199/yr.
+
+### 3.4 Go‑to‑Market & Marketing Plan
+
+* **B2B**
+  • Publish white‑papers (Resources blog)
+  • Exhibit at Urja Varta & GEO India
+  • Targeted LinkedIn ads (reservoir managers)
+  • Case‑study webinars (Cairn, Selan).
+* **B2C**
+  • Instagram reels of classroom builds
+  • Local school workshops
+  • Referral discounts (₹ 1 000 off per friend)
+  • Cross‑promo banners among sister sites.
+
+### 3.5 Operations Plan
+
+| Function | Current Assets                | 12‑mo Need                        | Notes                   |
+| -------- | ----------------------------- | --------------------------------- | ----------------------- |
+| DevOps   | Hostinger VPS + Nginx/PM2     | Kubernetes cluster for autoscale  | Budget ₹ 1 L/yr         |
+| Talent   | 6 core employees + Kalpratech | Hire 2 frontend, 1 DevRel         | Use ESOPs for retention |
+| Finance  | Razorpay + Tally              | Move to Zoho Books, automated GST |                         |
+
+### 3.6 Financial Projections (INR Lakhs)
+
+| Year     | Revenue | COGS | OPEX | EBITDA |
+| -------- | ------- | ---- | ---- | ------ |
+| FY 25‑26 | 160     | 25   | 90   | 45     |
+| FY 26‑27 | 310     | 40   | 140  | 130    |
+| FY 27‑28 | 520     | 60   | 220  | 240    |
+
+*Assumptions: 5 AutoSplicing licences/yr, 2 ML consulting projects/yr, 1 000 StoryLikho premium users by FY 27, four Kids cohorts/yr.*
+
+### 3.7 Risk & Mitigation
+
+* **Market Volatility** → Diversify revenue across B2B and B2C.
+* **Technical Debt** → Adopt micro‑frontends & one‑time AST tagging for scalability.
+* **Regulatory** → GST compliance and periodic security audits.
+
+### 3.8 Roadmap
+
+| Q3 2025                 | Q4 2025                                | Q1 2026         | Q2 2026           | Q3 2026        |
+| ----------------------- | -------------------------------------- | --------------- | ----------------- | -------------- |
+| StoryLikho alpha → beta | StoryLikho launch; ameyem.com relaunch | Chittibadi beta | Sambandhalu alpha | Chess99 launch |
+
+---
+
+## 4 • Next Steps & Action Items
+
+1. Approve colour palette & typography by **15 July 2025**.
+2. Finalise ameyem.com wireframes; begin Gatsby/Next JS build.
+3. Migrate corporate blog posts and the Bakrol ML paper to Resources.
+4. Set up central OAuth & billing micro‑service (Hostinger VPS → containerised API).
+5. Prepare marketing kit (logos, one‑pager PDF, pitch deck) for Urja Varta 2025.
+
+---
+
+**Prepared by:** ChatGPT (OpenAI o3) | © 2025 Ameyem Geo Solutions Pvt Ltd.
