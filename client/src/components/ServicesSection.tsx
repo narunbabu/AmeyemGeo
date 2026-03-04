@@ -1,36 +1,41 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Brain, Code, TrendingUp, Layers, FlaskRound, Droplets, CheckCircle, ArrowRight } from "lucide-react";
+import { Brain, Code, TrendingUp, Layers, FlaskRound, Droplets, CheckCircle, ArrowRight, Laptop2 } from "lucide-react";
+import { Link } from "wouter";
 
 export default function ServicesSection() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const services = [
     {
       icon: Brain,
       title: "AI-Powered Geoscience",
       description: "From raw well logs to petrophysical predictions, leverage machine learning for superior insights and automated signal tracking on seismic images.",
       features: ["Petrophysical log generation", "Seismic signal tracking", "Automated interpretation"],
-      gradient: "from-[var(--ocean-blue)] to-blue-600"
+      gradient: "from-[var(--ocean-blue)] to-blue-600",
+      link: "/services/ai-powered-geoscience"
     },
     {
       icon: Code,
       title: "Custom Software Tools",
       description: "Automate workflows with bespoke Python tools for well log splicing, seismic digitization, and data conversion optimized for your specific needs.",
       features: ["Well log splicing automation", "Seismic digitization tools", "Data format conversion"],
-      gradient: "from-[var(--energy-orange)] to-orange-600"
+      gradient: "from-[var(--energy-orange)] to-orange-600",
+      link: "/services/custom-software-tools"
     },
     {
       icon: TrendingUp,
       title: "Full-Cycle Geophysical Services",
-      description: "Expert interpretation, modeling, and analysis from prospect identification to volumetrics, including groundwater exploration services.",
-      features: ["Seismic interpretation", "Rock physics analysis", "VES interpretation"],
-      gradient: "from-green-500 to-green-600"
+  description: "Expert interpretation, modeling, and analysis from prospect identification to volumetrics, including groundwater exploration services.",
+  features: ["Seismic interpretation", "Rock physics analysis", "VES interpretation"],
+  gradient: "from-green-500 to-green-600",
+  link: "/services/full-cycle-geophysical-services"
+  },
+  {
+    icon: Laptop2,
+    title: "Web & Mobile Development",
+    description: "Leveraging our software expertise to build custom web and mobile applications, including our own portfolio of AI-powered platforms.",
+    features: ["Full-stack web applications", "AI-powered SaaS products", "Mobile-first development"],
+    gradient: "from-purple-500 to-indigo-600",
+    link: "/services/web-mobile-development"
     }
   ];
 
@@ -65,7 +70,7 @@ export default function ServicesSection() {
         </div>
         
         {/* Services Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid lg:grid-cols-4 gap-8 mb-16">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
@@ -84,12 +89,13 @@ export default function ServicesSection() {
                       </li>
                     ))}
                   </ul>
-                  <button 
-                    onClick={() => scrollToSection('contact')}
-                    className="text-[var(--ocean-blue)] font-medium hover:text-[var(--energy-orange)] transition-colors duration-200 flex items-center"
-                  >
-                    Learn More <ArrowRight className="ml-1 w-4 h-4" />
-                  </button>
+            <Link href={service.link}>
+              <button
+                className="text-[var(--ocean-blue)] font-medium hover:text-[var(--energy-orange)] transition-colors duration-200 flex items-center"
+              >
+                Learn More <ArrowRight className="ml-1 w-4 h-4" />
+              </button>
+            </Link>
                 </CardContent>
               </Card>
             );

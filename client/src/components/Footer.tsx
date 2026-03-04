@@ -1,4 +1,5 @@
 import { Mail, Linkedin, Twitter } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Footer() {
   const scrollToSection = (sectionId: string) => {
@@ -114,9 +115,14 @@ export default function Footer() {
         
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2025 AMEYEM Geo Solutions Pvt Ltd. All rights reserved.
-          </p>
+          <div className="flex items-center gap-4 mb-4 md:mb-0">
+            <p className="text-gray-400 text-sm">
+              © 2025 AMEYEM Geo Solutions Pvt Ltd. All rights reserved.
+            </p>
+            <Link href="/privacy-policy" className="text-gray-400 text-sm hover:text-[var(--energy-orange)] transition-colors duration-200">
+              Privacy Policy
+            </Link>
+          </div>
           <div className="flex space-x-6">
             {socialLinks.map((social, index) => {
               const IconComponent = social.icon;
