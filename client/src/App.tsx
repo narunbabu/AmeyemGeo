@@ -10,6 +10,7 @@ import CustomSoftwareTools from "@/pages/services/CustomSoftwareTools";
 import FullCycleGeophysicalServices from "@/pages/services/FullCycleGeophysicalServices";
 import WebMobileDevelopment from "@/pages/services/WebMobileDevelopment";
 import SeisTrans from "@/pages/products/SeisTrans";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
 
 function Router() {
   return (
@@ -20,6 +21,7 @@ function Router() {
       <Route path="/services/full-cycle-geophysical-services" component={FullCycleGeophysicalServices} />
       <Route path="/services/web-mobile-development" component={WebMobileDevelopment} />
       <Route path="/products/seistrans" component={SeisTrans} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route component={NotFound} />
     </Switch>
   );
