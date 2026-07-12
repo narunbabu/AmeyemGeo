@@ -216,9 +216,9 @@ const faqItems = [
       "Yes. SeisMind reads Petrel ASCII exports directly (.asc well heads, .dev deviation surveys, .tops formation markers, checkshot files). SEG-Y volumes export identically from all major platforms. LAS well logs are industry-standard. ZMAP horizon grids are supported. Output prediction volumes (SEG-Y) import back into any interpretation platform.",
   },
   {
-    question: "What does the free trial include?",
+    question: "What does the free edition include?",
     answer:
-      "Full access to the desktop application and all visualization tools for 30 days. The trial limits you to 5 wells and 1 seismic volume, with manual ML training (no autonomous agent execution). This is enough to load a small project, run a few synthetic ties, train a single model, and evaluate the visualization quality. No credit card required.",
+      "The full desktop application and all visualization tools, free forever — no time limit and no account required. Free is limited to 5 wells and 1 seismic volume, and includes the agent workflow (download sample data, build a project, and run a preliminary interpretation), well tie, horizon picking, and fault interpretation. Machine learning, seismic attributes, autonomous agents, and reporting are Professional features.",
   },
   {
     question: "How does the ML prediction work? What architectures are available?",
@@ -248,7 +248,7 @@ const faqItems = [
   {
     question: "How do I get help if something isn't working?",
     answer:
-      "Trial and Professional users have access to the community forum and email support. Enterprise users get a dedicated technical contact with a 4-hour response SLA. Our support team includes practicing geoscientists who understand your data and workflows.",
+      "Free and Professional users have access to the community forum and email support. Enterprise users get a dedicated technical contact with a 4-hour response SLA. Our support team includes practicing geoscientists who understand your data and workflows.",
   },
   {
     question: "What about multi-user or team licensing?",
@@ -605,8 +605,8 @@ export default function SeisMind() {
           </p>
           <p className="text-cyan-200 mb-10 max-w-2xl mx-auto">
             SeisMind automates the repetitive workflows so you can focus on the
-            geology. Download the trial, load your project, and run your first ML
-            prediction today.
+            geology. Download SeisMind Free, load a project, and run your first
+            interpretation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <DownloadGate source="footer">
