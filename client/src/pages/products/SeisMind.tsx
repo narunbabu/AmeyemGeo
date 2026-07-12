@@ -444,6 +444,99 @@ export default function SeisMind() {
         </div>
       </section>
 
+      {/* Getting Started */}
+      <section className="bg-gray-50 py-20 lg:py-28">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Getting started — drive SeisMind with your AI agent
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              After installing, SeisMind runs a local MCP server, so a coding agent
+              like Claude Code, Codex, or opencode can operate it for you in plain
+              English. Your data never leaves your machine.
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            <div className="bg-white rounded-xl border shadow-sm p-6 lg:p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-500 text-white font-bold">
+                  1
+                </span>
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Connect your agent
+                </h3>
+              </div>
+              <p className="text-gray-600 mb-3">
+                In Claude Code, one command registers SeisMind:
+              </p>
+              <pre className="bg-gray-900 text-cyan-100 rounded-lg p-4 text-sm overflow-x-auto mb-5">
+                <code>claude mcp add seismind -- seismind serve</code>
+              </pre>
+              <p className="text-gray-600 mb-3">
+                For Codex, opencode, or any MCP-capable agent, add a server that runs{" "}
+                <code className="px-1.5 py-0.5 bg-gray-100 rounded text-sm">
+                  seismind serve
+                </code>{" "}
+                — for example, in an <code className="px-1.5 py-0.5 bg-gray-100 rounded text-sm">.mcp.json</code>:
+              </p>
+              <pre className="bg-gray-900 text-cyan-100 rounded-lg p-4 text-sm overflow-x-auto">
+                <code>{`{
+  "mcpServers": {
+    "seismind": { "command": "seismind", "args": ["serve"] }
+  }
+}`}</code>
+              </pre>
+            </div>
+
+            <div className="bg-white rounded-xl border shadow-sm p-6 lg:p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-500 text-white font-bold">
+                  2
+                </span>
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Build a real project from public data
+                </h3>
+              </div>
+              <p className="text-gray-600 mb-3">Paste this to your agent:</p>
+              <blockquote className="border-l-4 border-cyan-500 bg-cyan-50 text-gray-800 italic p-4 rounded-r-lg">
+                “Download the Teapot Dome sample dataset, build a SeisMind project
+                from it, and open it.”
+              </blockquote>
+              <p className="text-gray-500 text-sm mt-3">
+                SeisMind fetches the public Teapot Dome (US DOE / RMOTC) 3D survey and
+                well logs, builds a complete project, and opens it. The first run
+                downloads ~1.7 GB and is cached afterwards.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl border shadow-sm p-6 lg:p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-500 text-white font-bold">
+                  3
+                </span>
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Run a preliminary interpretation
+                </h3>
+              </div>
+              <p className="text-gray-600 mb-3">Then:</p>
+              <blockquote className="border-l-4 border-cyan-500 bg-cyan-50 text-gray-800 italic p-4 rounded-r-lg">
+                “Run a preliminary interpretation on the Teapot Dome project — give me
+                a well-location map, a representative seismic section, and a summary of
+                the survey.”
+              </blockquote>
+              <p className="text-gray-500 text-sm mt-3">
+                You get a basemap, a seismic section, and a survey summary in the
+                project's interpretation folder. All of this works in the free edition —
+                the same conversation scales into ML prediction, seismic attributes, and
+                autonomous multi-well workflows on Professional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Pricing Section */}
       <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
