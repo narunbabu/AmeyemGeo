@@ -3,6 +3,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { downloads, purchase, contact } from "@/config/downloads";
+import { DownloadGate } from "@/components/DownloadGate";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -287,16 +288,15 @@ export default function SeisMind() {
               your machine.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button
-                asChild
-                size="lg"
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-6 text-lg"
-              >
-                <a href={downloads.free}>
+              <DownloadGate source="hero">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-6 text-lg"
+                >
                   <Download className="mr-2 h-5 w-5" />
                   Download Free Edition
-                </a>
-              </Button>
+                </Button>
+              </DownloadGate>
               <Button
                 asChild
                 size="lg"
@@ -609,16 +609,15 @@ export default function SeisMind() {
             prediction today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-white text-blue-700 hover:bg-gray-100 px-8 py-6 text-lg font-semibold"
-            >
-              <a href={downloads.free}>
+            <DownloadGate source="footer">
+              <Button
+                size="lg"
+                className="bg-white text-blue-700 hover:bg-gray-100 px-8 py-6 text-lg font-semibold"
+              >
                 <Download className="mr-2 h-5 w-5" />
                 Download SeisMind Free
-              </a>
-            </Button>
+              </Button>
+            </DownloadGate>
             <Button
               asChild
               size="lg"

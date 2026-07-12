@@ -23,4 +23,4 @@ export const contact = {
 // in-app prompts. TODO(ameyem): point this at your form service (Formspree /
 // Tally) or a small VPS endpoint. Until set, the gate lets the download through
 // but does not record the lead (see DownloadGate).
-export const leadEndpoint = "" as string; // e.g. "https://formspree.io/f/xxxx…"
+export const leadEndpoint = "/api/lead.php" as string; // self-hosted on the VPS (same-origin)
