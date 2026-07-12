@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { downloads, purchase, contact } from "@/config/downloads";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -39,7 +40,7 @@ const features = [
     title: "Autonomous Agent Workflow",
     subtitle: "13 AI Agents. One Unified Pipeline.",
     description:
-      "SeisTrans coordinates 13 domain-specific agents — ProjectManager, WellData, Seismic, SyntheticTie, Horizon, LogProcessing, SeismicAttribute, MLTraining, VolumeGeneration, Visualization, QC, Presentation, and Report — to execute complete reservoir characterization workflows with minimal manual intervention.",
+      "SeisMind coordinates 13 domain-specific agents — ProjectManager, WellData, Seismic, SyntheticTie, Horizon, LogProcessing, SeismicAttribute, MLTraining, VolumeGeneration, Visualization, QC, Presentation, and Report — to execute complete reservoir characterization workflows with minimal manual intervention.",
     detail:
       "What used to take a team of three geoscientists several weeks now completes in hours.",
   },
@@ -48,7 +49,7 @@ const features = [
     title: "Transformer-Based Log Prediction",
     subtitle: "Predict Well Logs from Seismic — Across Your Entire 3D Volume.",
     description:
-      "Train PyTorch transformer and mamba architectures on your well-to-seismic relationship. SeisTrans learns the mapping between seismic attributes at well locations and measured log curves (GR, LLD, NPHI, RHOB, DT), then predicts those properties at every trace in your 3D survey.",
+      "Train PyTorch transformer and mamba architectures on your well-to-seismic relationship. SeisMind learns the mapping between seismic attributes at well locations and measured log curves (GR, LLD, NPHI, RHOB, DT), then predicts those properties at every trace in your 3D survey.",
     detail:
       "The result: a spatially continuous reservoir model that honors your well data.",
   },
@@ -104,7 +105,7 @@ const steps = [
     number: 1,
     title: "Import Your Project",
     description:
-      "Load well heads, deviation surveys, checkshots, well logs, seismic volumes, and horizon grids from standard industry formats. SeisTrans auto-detects Petrel exports and configures the project structure.",
+      "Load well heads, deviation surveys, checkshots, well logs, seismic volumes, and horizon grids from standard industry formats. SeisMind auto-detects Petrel exports and configures the project structure.",
   },
   {
     number: 2,
@@ -116,7 +117,7 @@ const steps = [
     number: 3,
     title: "Train ML Models",
     description:
-      "Select training wells, configure the transformer architecture, and launch training. SeisTrans extracts seismic attributes at well locations, builds windowed training sequences, and trains PyTorch models with real-time validation metrics.",
+      "Select training wells, configure the transformer architecture, and launch training. SeisMind extracts seismic attributes at well locations, builds windowed training sequences, and trains PyTorch models with real-time validation metrics.",
   },
   {
     number: 4,
@@ -134,20 +135,20 @@ const steps = [
 
 const pricingTiers = [
   {
-    name: "Trial",
+    name: "Free",
     price: "Free",
-    period: "30 days",
-    description: "Explore the full platform for 30 days.",
+    period: "forever",
+    description: "The full desktop workstation, free for everyone.",
     highlighted: false,
     features: [
       "Full desktop application with all visualization tools",
       "Up to 5 wells and 1 seismic volume",
-      "Manual ML training (single model, limited epochs)",
-      "All import/export formats supported",
-      "Community forum access",
-      "No credit card required",
+      "Agent: download sample data, build a project, run preliminary interpretation",
+      "Well tie, horizon picking, fault interpretation",
+      "All import/export formats (SEG-Y, LAS, ZMAP, Petrel ASCII)",
+      "Community forum access — no account required",
     ],
-    cta: "Start Free Trial",
+    cta: "Download Free",
     ctaVariant: "outline" as const,
   },
   {
@@ -196,22 +197,22 @@ const faqItems = [
   {
     question: "What are the system requirements?",
     answer:
-      "SeisTrans runs on Windows 10/11 (64-bit) with Python 3.10+. Recommended: 16 GB RAM, SSD storage, NVIDIA GPU with CUDA support for ML training (8 GB+ VRAM). The application works without a GPU — training will use CPU, which is slower but functional. Typical project (50 wells, one 3D survey) uses 2-4 GB of disk space.",
+      "SeisMind runs on Windows 10/11 (64-bit) with Python 3.10+. Recommended: 16 GB RAM, SSD storage, NVIDIA GPU with CUDA support for ML training (8 GB+ VRAM). The application works without a GPU — training will use CPU, which is slower but functional. Typical project (50 wells, one 3D survey) uses 2-4 GB of disk space.",
   },
   {
     question: "Does my seismic data get uploaded to the cloud?",
     answer:
-      'No. SeisTrans processes all raw data (SEG-Y, LAS, well databases) locally on your machine. The cloud API only receives lightweight orchestration commands. Raw seismic traces, well log measurements, and trained model weights never leave your workstation. This is an architectural decision, not a configuration option.',
+      'No. SeisMind processes all raw data (SEG-Y, LAS, well databases) locally on your machine. The cloud API only receives lightweight orchestration commands. Raw seismic traces, well log measurements, and trained model weights never leave your workstation. This is an architectural decision, not a configuration option.',
   },
   {
     question: "What seismic data formats are supported?",
     answer:
-      "SEG-Y (2D and 3D volumes) via the segyio library. SeisTrans reads standard SEG-Y with IBM or IEEE floating-point encoding, supports byte-position customization for non-standard headers, and handles coordinate scalars automatically. Both regular and irregular grids are supported.",
+      "SEG-Y (2D and 3D volumes) via the segyio library. SeisMind reads standard SEG-Y with IBM or IEEE floating-point encoding, supports byte-position customization for non-standard headers, and handles coordinate scalars automatically. Both regular and irregular grids are supported.",
   },
   {
     question: "Can I import data from Petrel, OpendTect, or Kingdom?",
     answer:
-      "Yes. SeisTrans reads Petrel ASCII exports directly (.asc well heads, .dev deviation surveys, .tops formation markers, checkshot files). SEG-Y volumes export identically from all major platforms. LAS well logs are industry-standard. ZMAP horizon grids are supported. Output prediction volumes (SEG-Y) import back into any interpretation platform.",
+      "Yes. SeisMind reads Petrel ASCII exports directly (.asc well heads, .dev deviation surveys, .tops formation markers, checkshot files). SEG-Y volumes export identically from all major platforms. LAS well logs are industry-standard. ZMAP horizon grids are supported. Output prediction volumes (SEG-Y) import back into any interpretation platform.",
   },
   {
     question: "What does the free trial include?",
@@ -221,15 +222,15 @@ const faqItems = [
   {
     question: "How does the ML prediction work? What architectures are available?",
     answer:
-      "SeisTrans trains sequence-to-sequence deep learning models that learn the relationship between seismic attributes and measured well log curves. Available architectures include Enhanced Transformer, Mamba (state-space model), GAN+CNN hybrid, and reinforcement learning approaches. All training runs locally using PyTorch.",
+      "SeisMind trains sequence-to-sequence deep learning models that learn the relationship between seismic attributes and measured well log curves. Available architectures include Enhanced Transformer, Mamba (state-space model), GAN+CNN hybrid, and reinforcement learning approaches. All training runs locally using PyTorch.",
   },
   {
     question: "How accurate are the ML predictions?",
     answer:
-      "Accuracy depends on data quality, well density, and geological complexity. In our reference project (a producing-field 3D survey, 39 wells, 16 seismic attributes), models achieve R-squared values of 0.65-0.90 on blind wells for GR and RHOB. SeisTrans provides per-curve validation metrics, blind-well cross-plots, and residual maps. We recommend a minimum of 15-20 wells with good spatial distribution.",
+      "Accuracy depends on data quality, well density, and geological complexity. In our reference project (a producing-field 3D survey, 39 wells, 16 seismic attributes), models achieve R-squared values of 0.65-0.90 on blind wells for GR and RHOB. SeisMind provides per-curve validation metrics, blind-well cross-plots, and residual maps. We recommend a minimum of 15-20 wells with good spatial distribution.",
   },
   {
-    question: "Can I use SeisTrans for time-lapse (4D) monitoring?",
+    question: "Can I use SeisMind for time-lapse (4D) monitoring?",
     answer:
       "The current version is optimized for 3D interpretation and static reservoir characterization. Time-lapse workflows (difference volumes, time-shift analysis) are on the development roadmap. The underlying architecture supports multiple seismic surveys per project.",
   },
@@ -255,7 +256,7 @@ const faqItems = [
   },
 ];
 
-export default function SeisTrans() {
+export default function SeisMind() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -279,7 +280,7 @@ export default function SeisTrans() {
               </span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed">
-              SeisTrans is an AI-powered desktop application that automates the
+              SeisMind is an AI-powered desktop application that automates the
               seismic interpretation workflow — from well tie to reservoir
               characterization — using transformer-based machine learning trained
               on your own data. Your seismic. Your wells. Your models. Running on
@@ -287,19 +288,25 @@ export default function SeisTrans() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button
+                asChild
                 size="lg"
                 className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-6 text-lg"
               >
-                <Download className="mr-2 h-5 w-5" />
-                Start Your Free Trial
+                <a href={downloads.free}>
+                  <Download className="mr-2 h-5 w-5" />
+                  Download Free Edition
+                </a>
               </Button>
               <Button
+                asChild
                 size="lg"
                 variant="outline"
                 className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg"
               >
-                <Calendar className="mr-2 h-5 w-5" />
-                Request a Live Demo
+                <a href={contact.demo}>
+                  <Calendar className="mr-2 h-5 w-5" />
+                  Request a Live Demo
+                </a>
               </Button>
             </div>
             <div className="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto text-left">
@@ -527,6 +534,7 @@ export default function SeisTrans() {
                     ))}
                   </ul>
                   <Button
+                    asChild
                     className={`w-full ${
                       tier.highlighted
                         ? "bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white"
@@ -534,8 +542,18 @@ export default function SeisTrans() {
                     }`}
                     variant={tier.ctaVariant}
                   >
-                    {tier.cta}
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <a
+                      href={
+                        tier.name === "Professional"
+                          ? purchase.professional
+                          : tier.name === "Enterprise"
+                          ? purchase.enterprise
+                          : downloads.free
+                      }
+                    >
+                      {tier.cta}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </a>
                   </Button>
                 </CardContent>
               </Card>
@@ -586,25 +604,31 @@ export default function SeisTrans() {
             Let the agents do the heavy lifting.
           </p>
           <p className="text-cyan-200 mb-10 max-w-2xl mx-auto">
-            SeisTrans automates the repetitive workflows so you can focus on the
+            SeisMind automates the repetitive workflows so you can focus on the
             geology. Download the trial, load your project, and run your first ML
             prediction today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
+              asChild
               size="lg"
               className="bg-white text-blue-700 hover:bg-gray-100 px-8 py-6 text-lg font-semibold"
             >
-              <Download className="mr-2 h-5 w-5" />
-              Download SeisTrans
+              <a href={downloads.free}>
+                <Download className="mr-2 h-5 w-5" />
+                Download SeisMind Free
+              </a>
             </Button>
             <Button
+              asChild
               size="lg"
               variant="outline"
               className="border-white/50 text-white hover:bg-white/10 px-8 py-6 text-lg"
             >
-              Talk to Our Team
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <a href={contact.team}>
+                Talk to Our Team
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
             </Button>
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-cyan-200">
