@@ -7,10 +7,12 @@ vite.config.ts.*
 # Secrets - never commit
 .env
 .env.*
+!.env.example
 
 # Internal business data - never publish (public repo)
 attached_assets/
 LeadGen-cycle-*/
+data/            # captured sales leads (server/leads.ts -> data/leads.jsonl)
 full_code.txt
 .codesearch_index.jsonl
 test-results/
