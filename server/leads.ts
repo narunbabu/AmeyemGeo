@@ -26,6 +26,9 @@ export type LeadRecord = {
   email?: string;
   name?: string;
   company?: string;
+  role?: string; // DownloadGate: student | academic | independent | company | other
+  useCase?: string; // DownloadGate: what they hope to do with SeisMind
+  consent?: boolean; // DownloadGate: agreed to product updates
   message?: string;
   source?: string;
   receivedAt: string;
@@ -51,9 +54,12 @@ function summarize(record: LeadRecord): string {
     `from=${who}`,
     record.email && record.email !== who && `email=${record.email}`,
     record.company && `company=${record.company}`,
+    record.role && `role=${record.role}`,
+    record.consent !== undefined && `consent=${record.consent}`,
     record.source && `source=${record.source}`,
   ].filter(Boolean);
   let line = bits.join(" | ");
+  if (record.useCase) line += `\nuse case: ${record.useCase}`;
   if (record.message) line += `\nmessage: ${record.message}`;
   return line;
 }

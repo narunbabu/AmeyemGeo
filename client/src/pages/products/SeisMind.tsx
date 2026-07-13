@@ -3,6 +3,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { downloads, purchase, contact } from "@/config/downloads";
+import { DownloadGate } from "@/components/DownloadGate";
 import { captureLead } from "@/lib/lead";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -136,20 +137,20 @@ const steps = [
 
 const pricingTiers = [
   {
-    name: "Trial",
+    name: "Free",
     price: "Free",
-    period: "30 days",
-    description: "Explore the full platform for 30 days.",
+    period: "forever",
+    description: "The full desktop workstation, free for everyone.",
     highlighted: false,
     features: [
       "Full desktop application with all visualization tools",
       "Up to 5 wells and 1 seismic volume",
-      "Manual ML training (single model, limited epochs)",
-      "All import/export formats supported",
-      "Community forum access",
-      "No credit card required",
+      "Agent: download sample data, build a project, run preliminary interpretation",
+      "Well tie, horizon picking, fault interpretation",
+      "All import/export formats (SEG-Y, LAS, ZMAP, Petrel ASCII)",
+      "Community forum access — no account required",
     ],
-    cta: "Start Free Trial",
+    cta: "Download Free",
     ctaVariant: "outline" as const,
   },
   {
@@ -216,9 +217,9 @@ const faqItems = [
       "Yes. SeisMind reads Petrel ASCII exports directly (.asc well heads, .dev deviation surveys, .tops formation markers, checkshot files). SEG-Y volumes export identically from all major platforms. LAS well logs are industry-standard. ZMAP horizon grids are supported. Output prediction volumes (SEG-Y) import back into any interpretation platform.",
   },
   {
-    question: "What does the free trial include?",
+    question: "What does the free edition include?",
     answer:
-      "Full access to the desktop application and all visualization tools for 30 days. The trial limits you to 5 wells and 1 seismic volume, with manual ML training (no autonomous agent execution). This is enough to load a small project, run a few synthetic ties, train a single model, and evaluate the visualization quality. No credit card required.",
+      "The full desktop application and all visualization tools, free forever — no time limit and no account required. Free is limited to 5 wells and 1 seismic volume, and includes the agent workflow (download sample data, build a project, and run a preliminary interpretation), well tie, horizon picking, and fault interpretation. Machine learning, seismic attributes, autonomous agents, and reporting are Professional features.",
   },
   {
     question: "How does the ML prediction work? What architectures are available?",
@@ -248,7 +249,7 @@ const faqItems = [
   {
     question: "How do I get help if something isn't working?",
     answer:
-      "Trial and Professional users have access to the community forum and email support. Enterprise users get a dedicated technical contact with a 4-hour response SLA. Our support team includes practicing geoscientists who understand your data and workflows.",
+      "Free and Professional users have access to the community forum and email support. Enterprise users get a dedicated technical contact with a 4-hour response SLA. Our support team includes practicing geoscientists who understand your data and workflows.",
   },
   {
     question: "What about multi-user or team licensing?",
@@ -288,19 +289,15 @@ export default function SeisMind() {
               your machine.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button
-                asChild
-                size="lg"
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-6 text-lg"
-              >
-                <a
-                  href={downloads.free}
-                  onClick={() => captureLead({ type: "download", edition: "free", source: "seismind-hero" })}
+              <DownloadGate source="hero">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-6 text-lg"
                 >
                   <Download className="mr-2 h-5 w-5" />
                   Download Free Edition
-                </a>
-              </Button>
+                </Button>
+              </DownloadGate>
               <Button
                 asChild
                 size="lg"
@@ -447,6 +444,99 @@ export default function SeisMind() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Getting Started */}
+      <section className="bg-gray-50 py-20 lg:py-28">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Getting started — drive SeisMind with your AI agent
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              After installing, SeisMind runs a local MCP server, so a coding agent
+              like Claude Code, Codex, or opencode can operate it for you in plain
+              English. Your data never leaves your machine.
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            <div className="bg-white rounded-xl border shadow-sm p-6 lg:p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-500 text-white font-bold">
+                  1
+                </span>
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Connect your agent
+                </h3>
+              </div>
+              <p className="text-gray-600 mb-3">
+                In Claude Code, one command registers SeisMind:
+              </p>
+              <pre className="bg-gray-900 text-cyan-100 rounded-lg p-4 text-sm overflow-x-auto mb-5">
+                <code>claude mcp add seismind -- seismind serve</code>
+              </pre>
+              <p className="text-gray-600 mb-3">
+                For Codex, opencode, or any MCP-capable agent, add a server that runs{" "}
+                <code className="px-1.5 py-0.5 bg-gray-100 rounded text-sm">
+                  seismind serve
+                </code>{" "}
+                — for example, in an <code className="px-1.5 py-0.5 bg-gray-100 rounded text-sm">.mcp.json</code>:
+              </p>
+              <pre className="bg-gray-900 text-cyan-100 rounded-lg p-4 text-sm overflow-x-auto">
+                <code>{`{
+  "mcpServers": {
+    "seismind": { "command": "seismind", "args": ["serve"] }
+  }
+}`}</code>
+              </pre>
+            </div>
+
+            <div className="bg-white rounded-xl border shadow-sm p-6 lg:p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-500 text-white font-bold">
+                  2
+                </span>
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Build a real project from public data
+                </h3>
+              </div>
+              <p className="text-gray-600 mb-3">Paste this to your agent:</p>
+              <blockquote className="border-l-4 border-cyan-500 bg-cyan-50 text-gray-800 italic p-4 rounded-r-lg">
+                “Download the Teapot Dome sample dataset, build a SeisMind project
+                from it, and open it.”
+              </blockquote>
+              <p className="text-gray-500 text-sm mt-3">
+                SeisMind fetches the public Teapot Dome (US DOE / RMOTC) 3D survey and
+                well logs, builds a complete project, and opens it. The first run
+                downloads ~1.7 GB and is cached afterwards.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl border shadow-sm p-6 lg:p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-500 text-white font-bold">
+                  3
+                </span>
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Run a preliminary interpretation
+                </h3>
+              </div>
+              <p className="text-gray-600 mb-3">Then:</p>
+              <blockquote className="border-l-4 border-cyan-500 bg-cyan-50 text-gray-800 italic p-4 rounded-r-lg">
+                “Run a preliminary interpretation on the Teapot Dome project — give me
+                a well-location map, a representative seismic section, and a summary of
+                the survey.”
+              </blockquote>
+              <p className="text-gray-500 text-sm mt-3">
+                You get a basemap, a seismic section, and a survey summary in the
+                project's interpretation folder. All of this works in the free edition —
+                the same conversation scales into ML prediction, seismic attributes, and
+                autonomous multi-well workflows on Professional.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -622,23 +712,19 @@ export default function SeisMind() {
           </p>
           <p className="text-cyan-200 mb-10 max-w-2xl mx-auto">
             SeisMind automates the repetitive workflows so you can focus on the
-            geology. Download the trial, load your project, and run your first ML
-            prediction today.
+            geology. Download SeisMind Free, load a project, and run your first
+            interpretation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-white text-blue-700 hover:bg-gray-100 px-8 py-6 text-lg font-semibold"
-            >
-              <a
-                href={downloads.free}
-                onClick={() => captureLead({ type: "download", edition: "free", source: "seismind-footer" })}
+            <DownloadGate source="footer">
+              <Button
+                size="lg"
+                className="bg-white text-blue-700 hover:bg-gray-100 px-8 py-6 text-lg font-semibold"
               >
                 <Download className="mr-2 h-5 w-5" />
                 Download SeisMind Free
-              </a>
-            </Button>
+              </Button>
+            </DownloadGate>
             <Button
               asChild
               size="lg"

@@ -7,12 +7,17 @@ import { captureLead } from "./leads";
 
 // Lightweight lead schema for download / purchase / demo intents. Email is
 // optional so an anonymous download can still be counted; everything is captured.
+// Accepts both the CTA pings (lib/lead.ts: type/edition) and the DownloadGate
+// email-gate payload (email/name/role/useCase/consent).
 const leadSchema = z.object({
-  type: z.string().min(1).max(40),
+  type: z.string().min(1).max(40).default("download"),
   edition: z.string().max(40).optional(),
   email: z.string().email().max(200).optional(),
   name: z.string().max(200).optional(),
   company: z.string().max(200).optional(),
+  role: z.string().max(100).optional(),
+  useCase: z.string().max(4000).optional(),
+  consent: z.boolean().optional(),
   message: z.string().max(4000).optional(),
   source: z.string().max(400).optional(),
 });

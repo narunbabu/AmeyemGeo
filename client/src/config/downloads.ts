@@ -19,9 +19,9 @@ export const contact = {
   academic: "mailto:academic@ameyem.com?subject=SeisMind%20Academic%20License",
 } as const;
 
-// Lead-capture endpoint. Wired to the built-in backend route (server/leads.ts),
-// which persists every lead to data/leads.jsonl AND notifies the team via
-// LEAD_WEBHOOK_URL (Slack/Discord/Formspree) or SMTP_* when configured. Use the
-// captureLead() helper in client/src/lib/lead.ts to post to it. This replaces the
-// old mailto-only flow that silently dropped leads when a visitor had no mail client.
+// Lead-capture endpoint shared by the download email-gate (DownloadGate) and
+// the CTA pings (lib/lead.ts). Served by our own Express backend
+// (server/leads.ts): persists every lead to data/leads.jsonl and notifies the
+// team via LEAD_WEBHOOK_URL (Slack/Discord/Formspree) or SMTP_* when set.
+// Same-origin on both Replit and the VPS - no PHP required.
 export const leadEndpoint = "/api/lead" as string;
