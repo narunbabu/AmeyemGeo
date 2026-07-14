@@ -7,9 +7,13 @@ export const downloads = {
   free: "https://github.com/narunbabu/geoagent/releases/download/seismind-v3.1.0/SeisMind-Free-Setup-3.1.0.exe",
 } as const;
 
-// Pro is delivered post-purchase, never linked publicly.
+// Paid tiers are delivered post-purchase (licensed installer), never linked
+// publicly. Each CTA opens a pre-addressed sales email; the click is also
+// recorded server-side via captureLead so no lead depends on the mail client.
 export const purchase = {
-  professional: "mailto:sales@ameyem.com?subject=SeisMind%20Professional",
+  go: "mailto:sales@ameyem.com?subject=SeisMind%20Go%20(%241%2C000%2Fyr)",
+  plus: "mailto:sales@ameyem.com?subject=SeisMind%20Plus%20(%245%2C000%2Fyr)",
+  pro: "mailto:sales@ameyem.com?subject=SeisMind%20Pro%20(%2410%2C000%2Fyr)",
   enterprise: "mailto:sales@ameyem.com?subject=SeisMind%20Enterprise",
 } as const;
 

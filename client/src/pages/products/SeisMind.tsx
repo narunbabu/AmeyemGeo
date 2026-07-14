@@ -96,7 +96,7 @@ const features = [
     title: "Data Sovereignty by Design",
     subtitle: "Your Seismic Data Never Leaves Your Machine.",
     description:
-      "All raw data is processed locally. SEG-Y files, LAS logs, well databases, and trained models stay on your workstation. The cloud API handles only agent orchestration commands — no raw traces, no proprietary measurements, no bulk data uploads.",
+      "Everything runs locally. SEG-Y files, LAS logs, well databases, trained models — and the agent orchestration itself — stay on your workstation. SeisMind exposes a local MCP server that your own AI coding agent drives; nothing is uploaded to Ameyem.",
     detail:
       "Compliant by design with data-handling policies at major E&P operators and national oil companies.",
   },
@@ -135,63 +135,109 @@ const steps = [
   },
 ];
 
+// Five ordered tiers, mirroring the desktop app's edition ladder
+// (free < go < plus < pro < enterprise). Each tier carries its own CTA target
+// so the pricing grid renders generically. Every card except Free also emits a
+// server-side lead on click (captureLead) — see the CTA below.
 const pricingTiers = [
   {
     name: "Free",
+    edition: "free",
     price: "Free",
     period: "forever",
     description: "The full desktop workstation, free for everyone.",
     highlighted: false,
+    href: downloads.free,
+    leadType: "download" as const,
+    cta: "Download Free",
+    ctaVariant: "outline" as const,
     features: [
       "Full desktop application with all visualization tools",
       "Up to 5 wells and 1 seismic volume",
-      "Agent: download sample data, build a project, run preliminary interpretation",
-      "Well tie, horizon picking, fault interpretation",
+      "Well-to-seismic tie; view imported horizons & faults",
+      "AI agent: download sample data, build a project, run a preliminary interpretation",
       "All import/export formats (SEG-Y, LAS, ZMAP, Petrel ASCII)",
-      "Community forum access — no account required",
+      "Exports carry a small Ameyem watermark",
+      "Community forum — no account required",
     ],
-    cta: "Download Free",
-    ctaVariant: "outline" as const,
   },
   {
-    name: "Professional",
-    price: "$1,500",
+    name: "Go",
+    edition: "go",
+    price: "$1,000",
     period: "/year",
-    description: "For working geoscientists and small interpretation teams.",
-    highlighted: true,
+    description: "For independents ready to interpret, not just view.",
+    highlighted: false,
+    href: purchase.go,
+    leadType: "purchase" as const,
+    cta: "Get Go",
+    ctaVariant: "outline" as const,
     features: [
-      "Unlimited wells and seismic volumes",
-      "Autonomous agent execution — all 13 agents with batch processing",
-      "Bulk synthetic tie and shift across entire project",
-      "Multiple ML architectures (Transformer, Mamba, GAN+CNN)",
-      "Full petrophysical volume computation pipeline",
-      "PowerPoint and Word report generation",
-      "500 cloud API credits/month",
-      "Email support (48-hour response)",
-      "Software updates for 12 months",
+      "Everything in Free, plus:",
+      "Up to 25 wells and 5 seismic volumes",
+      "Horizon & fault interpretation tools",
+      "Watermark-free exports",
+      "Email support",
     ],
-    cta: "Subscribe Now",
+  },
+  {
+    name: "Plus",
+    edition: "plus",
+    price: "$5,000",
+    period: "/year",
+    description: "For interpreters who need seismic attributes at scale.",
+    highlighted: false,
+    href: purchase.plus,
+    leadType: "purchase" as const,
+    cta: "Get Plus",
+    ctaVariant: "outline" as const,
+    features: [
+      "Everything in Go, plus:",
+      "Unlimited wells and seismic volumes",
+      "Seismic attribute generation (envelope, sweetness, chaos, curvature, and more)",
+      "Multi-attribute analysis and volume export",
+      "GPU-accelerated volume processing",
+    ],
+  },
+  {
+    name: "Pro",
+    edition: "pro",
+    price: "$10,000",
+    period: "/year",
+    description: "The full ML reservoir-characterization workstation.",
+    highlighted: true,
+    href: purchase.pro,
+    leadType: "purchase" as const,
+    cta: "Get Pro",
     ctaVariant: "default" as const,
+    features: [
+      "Everything in Plus, plus:",
+      "ML reservoir characterization — train Transformer/Mamba models on your wells",
+      "Predict logs & petrophysical volumes across the full 3D survey",
+      "Autonomous multi-well agent workflows (all 13 agents)",
+      "PowerPoint & Word report generation",
+      "Priority email support & 12 months of updates",
+    ],
   },
   {
     name: "Enterprise",
-    price: "$5,000",
-    period: "/year",
+    edition: "enterprise",
+    price: "Custom",
+    period: "",
     description: "For E&P companies and geoscience service firms.",
     highlighted: false,
-    features: [
-      "Unlimited cloud API credits",
-      "On-premise deployment option",
-      "Custom model training on proprietary datasets",
-      "Priority support — dedicated technical contact (4h SLA)",
-      "SSO/LDAP integration for corporate authentication",
-      "Audit logging and usage reporting",
-      "Custom agent development for company-specific workflows",
-      "Annual on-site training workshop (1 day, up to 10 attendees)",
-      "Early access to new features and architectures",
-    ],
+    href: purchase.enterprise,
+    leadType: "purchase" as const,
     cta: "Contact Sales",
     ctaVariant: "outline" as const,
+    features: [
+      "Everything in Pro, plus:",
+      "On-premise / air-gapped deployment",
+      "SSO / LDAP integration",
+      "Custom model training on proprietary datasets",
+      "Audit logging & usage reporting",
+      "Dedicated technical contact (4h SLA) & on-site training",
+    ],
   },
 ];
 
@@ -204,7 +250,7 @@ const faqItems = [
   {
     question: "Does my seismic data get uploaded to the cloud?",
     answer:
-      'No. SeisMind processes all raw data (SEG-Y, LAS, well databases) locally on your machine. The cloud API only receives lightweight orchestration commands. Raw seismic traces, well log measurements, and trained model weights never leave your workstation. This is an architectural decision, not a configuration option.',
+      'No. SeisMind runs entirely on your machine, including the AI agent layer: it exposes a local MCP server that your own coding agent (Claude Code, Codex, opencode) connects to. Raw seismic traces, well log measurements, trained model weights, and the orchestration commands all stay on your workstation — nothing is uploaded to Ameyem. This is an architectural decision, not a configuration option.',
   },
   {
     question: "What seismic data formats are supported?",
@@ -219,7 +265,7 @@ const faqItems = [
   {
     question: "What does the free edition include?",
     answer:
-      "The full desktop application and all visualization tools, free forever — no time limit and no account required. Free is limited to 5 wells and 1 seismic volume, and includes the agent workflow (download sample data, build a project, and run a preliminary interpretation), well tie, horizon picking, and fault interpretation. Machine learning, seismic attributes, autonomous agents, and reporting are Professional features.",
+      "The full desktop application and all visualization tools, free forever — no time limit and no account required. Free is limited to 5 wells and 1 seismic volume, includes well-to-seismic tie and viewing of imported horizons & faults, and the AI agent can download sample data, build a project, and run a preliminary interpretation. Exports carry a small Ameyem watermark. Horizon & fault interpretation tools come with Go; seismic attributes with Plus; machine-learning reservoir characterization, autonomous agents, and reporting with Pro.",
   },
   {
     question: "How does the ML prediction work? What architectures are available?",
@@ -239,22 +285,22 @@ const faqItems = [
   {
     question: "What happens when my subscription expires?",
     answer:
-      "The desktop application continues to work for all local operations — you can still view your projects, visualize data, and use basic features. Agent automation and cloud API access require an active subscription. Your data, models, and project files are always yours — nothing is locked behind the subscription wall.",
+      "The desktop application continues to work — you can still open your projects, visualize data, and use the Free-tier features. Paid-tier capabilities (interpretation tools, attributes, ML, autonomous agents) pause until you renew. Your data, models, and project files are always yours — nothing is locked behind the subscription wall.",
   },
   {
     question: "Is there an academic or student discount?",
     answer:
-      "Yes. Verified university researchers and students receive a free Professional license for non-commercial academic use. Contact us at academic@ameyem.com with your institutional email and a brief description of your research.",
+      "Yes. Verified university researchers and students receive a free Pro license for non-commercial academic use. Contact us at academic@ameyem.com with your institutional email and a brief description of your research.",
   },
   {
     question: "How do I get help if something isn't working?",
     answer:
-      "Free and Professional users have access to the community forum and email support. Enterprise users get a dedicated technical contact with a 4-hour response SLA. Our support team includes practicing geoscientists who understand your data and workflows.",
+      "Free users have the community forum. Go, Plus, and Pro include email support (priority on Pro). Enterprise users get a dedicated technical contact with a 4-hour response SLA. Our support team includes practicing geoscientists who understand your data and workflows.",
   },
   {
     question: "What about multi-user or team licensing?",
     answer:
-      "Professional tier offers volume discounts: 5+ seats at $1,200/year each. Enterprise tier includes unlimited seats with SSO/LDAP integration. Contact sales@ameyem.com for custom team pricing for groups of 20+.",
+      "Paid tiers (Go, Plus, Pro) are licensed per seat with volume discounts on multi-seat orders. Enterprise includes unlimited seats with SSO/LDAP integration and central license management. Contact sales@ameyem.com for team pricing.",
   },
 ];
 
@@ -534,7 +580,7 @@ export default function SeisMind() {
                 You get a basemap, a seismic section, and a survey summary in the
                 project's interpretation folder. All of this works in the free edition —
                 the same conversation scales into ML prediction, seismic attributes, and
-                autonomous multi-well workflows on Professional.
+                autonomous multi-well workflows on Pro.
               </p>
             </div>
           </div>
@@ -552,20 +598,20 @@ export default function SeisMind() {
               </span>
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 max-w-7xl mx-auto items-stretch">
             {pricingTiers.map((tier) => (
               <Card
                 key={tier.name}
                 className={`relative overflow-hidden ${
                   tier.highlighted
-                    ? "bg-white text-[var(--charcoal)] border-2 border-cyan-400 shadow-2xl scale-105"
+                    ? "bg-white text-[var(--charcoal)] border-2 border-cyan-400 shadow-2xl"
                     : "bg-white/10 backdrop-blur-sm border-white/20 text-white"
                 }`}
               >
                 {tier.highlighted && (
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-blue-600" />
                 )}
-                <CardContent className="p-8 flex flex-col h-full">
+                <CardContent className="p-6 flex flex-col h-full">
                   {tier.highlighted && (
                     <Badge className="bg-cyan-500 text-white w-fit mb-4">
                       Most Popular
@@ -578,7 +624,7 @@ export default function SeisMind() {
                     <span className="text-4xl font-poppins font-bold">
                       {tier.price}
                     </span>
-                    {tier.period !== "30 days" && (
+                    {tier.period && (
                       <span
                         className={`text-sm ${
                           tier.highlighted
@@ -587,17 +633,6 @@ export default function SeisMind() {
                         }`}
                       >
                         {tier.period}
-                      </span>
-                    )}
-                    {tier.period === "30 days" && (
-                      <span
-                        className={`text-sm ml-2 ${
-                          tier.highlighted
-                            ? "text-[var(--medium-gray)]"
-                            : "text-gray-400"
-                        }`}
-                      >
-                        for {tier.period}
                       </span>
                     )}
                   </div>
@@ -640,20 +675,11 @@ export default function SeisMind() {
                     variant={tier.ctaVariant}
                   >
                     <a
-                      href={
-                        tier.name === "Professional"
-                          ? purchase.professional
-                          : tier.name === "Enterprise"
-                          ? purchase.enterprise
-                          : downloads.free
-                      }
+                      href={tier.href}
                       onClick={() =>
                         captureLead({
-                          type:
-                            tier.name === "Professional" || tier.name === "Enterprise"
-                              ? "purchase"
-                              : "download",
-                          edition: tier.name.toLowerCase(),
+                          type: tier.leadType,
+                          edition: tier.edition,
                           source: "seismind-pricing",
                         })
                       }
@@ -667,8 +693,9 @@ export default function SeisMind() {
             ))}
           </div>
           <p className="text-center text-gray-400 text-sm mt-8">
-            Volume discount: 5+ Professional seats at $1,200/year each. Enterprise
-            custom pricing for teams of 20+.
+            All paid tiers are billed annually. Multi-seat volume discounts
+            available — Enterprise offers custom pricing, SSO/LDAP, and on-premise
+            deployment. Academic Pro licenses are free for verified researchers.
           </p>
         </div>
       </section>
