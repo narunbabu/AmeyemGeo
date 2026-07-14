@@ -37,8 +37,13 @@
 
 1. Download the Free edition (Windows installer):
    https://ameyem.com/products/seismind
-2. Connect your AI agent. In Claude Code: `claude mcp add seismind -- seismind serve`
-   (for other MCP clients, add a server that runs `seismind serve`).
+2. Connect your AI agent. After installing, run `seismind mcp-install` (or the
+   Start-menu shortcut "Connect to your AI agent (MCP)") to print the exact command
+   with the full install path. In Claude Code it looks like:
+     Windows: claude mcp add seismind -- "C:\Program Files\SeisMind\seismind.exe" serve
+     WSL:     claude mcp add seismind -- "/mnt/c/Program Files/SeisMind/seismind.exe" serve
+   The MCP server accepts WSL-style /mnt/... paths and translates them to Windows paths
+   automatically. After adding, run /mcp -> Reconnect (or restart the agent) so tools load.
 3. Tell the agent: "Download the Teapot Dome sample dataset, build a SeisMind project from
    it, and open it." (Teapot Dome = public US DOE / RMOTC 3D survey, ~1.7 GB, cached after
    first run.)

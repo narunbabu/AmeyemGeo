@@ -577,25 +577,47 @@ export default function SeisMind() {
                 </h3>
               </div>
               <p className="text-gray-600 mb-3">
-                In Claude Code, one command registers SeisMind:
+                After installing, open the Start-menu shortcut{" "}
+                <span className="font-medium text-gray-800">
+                  "Connect to your AI agent (MCP)"
+                </span>{" "}
+                — it prints the exact command to paste into your agent, with the full
+                install path already filled in (so it works whether or not SeisMind is on
+                your PATH). Or run <code className="px-1.5 py-0.5 bg-gray-100 rounded text-sm">seismind mcp-install</code> yourself.
               </p>
-              <pre className="bg-gray-900 text-cyan-100 rounded-lg p-4 text-sm overflow-x-auto mb-5">
-                <code>claude mcp add seismind -- seismind serve</code>
+              <p className="text-gray-600 mb-2">In Claude Code (Windows PowerShell / cmd):</p>
+              <pre className="bg-gray-900 text-cyan-100 rounded-lg p-4 text-sm overflow-x-auto mb-4">
+                <code>claude mcp add seismind -- "C:\Program Files\SeisMind\seismind.exe" serve</code>
               </pre>
-              <p className="text-gray-600 mb-3">
-                For Codex, opencode, or any MCP-capable agent, add a server that runs{" "}
-                <code className="px-1.5 py-0.5 bg-gray-100 rounded text-sm">
-                  seismind serve
-                </code>{" "}
-                — for example, in an <code className="px-1.5 py-0.5 bg-gray-100 rounded text-sm">.mcp.json</code>:
+              <p className="text-gray-600 mb-2">
+                Driving it from WSL? SeisMind is a Windows process, so point at the same exe
+                by its <code className="px-1.5 py-0.5 bg-gray-100 rounded text-sm">/mnt/c/…</code> path
+                (the MCP server also accepts your <code className="px-1.5 py-0.5 bg-gray-100 rounded text-sm">/mnt/…</code> paths
+                and translates them automatically):
               </p>
-              <pre className="bg-gray-900 text-cyan-100 rounded-lg p-4 text-sm overflow-x-auto">
+              <pre className="bg-gray-900 text-cyan-100 rounded-lg p-4 text-sm overflow-x-auto mb-4">
+                <code>claude mcp add seismind -- "/mnt/c/Program Files/SeisMind/seismind.exe" serve</code>
+              </pre>
+              <p className="text-gray-600 mb-2">
+                For Codex, opencode, or any MCP client, add a server that runs the same exe
+                with the <code className="px-1.5 py-0.5 bg-gray-100 rounded text-sm">serve</code> argument, e.g. in{" "}
+                <code className="px-1.5 py-0.5 bg-gray-100 rounded text-sm">.mcp.json</code>:
+              </p>
+              <pre className="bg-gray-900 text-cyan-100 rounded-lg p-4 text-sm overflow-x-auto mb-4">
                 <code>{`{
   "mcpServers": {
-    "seismind": { "command": "seismind", "args": ["serve"] }
+    "seismind": {
+      "command": "C:\\\\Program Files\\\\SeisMind\\\\seismind.exe",
+      "args": ["serve"]
+    }
   }
 }`}</code>
               </pre>
+              <p className="text-sm text-gray-500">
+                After adding it, run <code className="px-1.5 py-0.5 bg-gray-100 rounded text-xs">/mcp</code> in
+                your agent and <span className="font-medium">Reconnect</span> the "seismind"
+                server (or restart the agent) so its tools load into the session.
+              </p>
             </div>
 
             <div className="bg-white rounded-xl border shadow-sm p-6 lg:p-8">
