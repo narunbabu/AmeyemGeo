@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { downloads, purchase, contact } from "@/config/downloads";
 import { DownloadGate } from "@/components/DownloadGate";
 import { captureLead } from "@/lib/lead";
+import { Seo } from "@/components/Seo";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -304,12 +305,68 @@ const faqItems = [
   },
 ];
 
+const CANONICAL = "https://ameyem.com/products/seismind";
+
+// Structured data (schema.org) so search engines and JS-rendering agents can
+// extract what SeisMind is, its price tiers, and the FAQ. Built from the same
+// pricingTiers / faqItems above so it never drifts from the visible page.
+function buildJsonLd() {
+  const offers = pricingTiers.map((t) => {
+    const price = t.price.replace(/[^0-9]/g, ""); // "$1,000" -> "1000"; "Free"/"Custom" -> ""
+    return {
+      "@type": "Offer",
+      name: `SeisMind ${t.name}`,
+      price: price || "0",
+      priceCurrency: "USD",
+      ...(t.period === "/year" ? { priceValidUntil: "2027-12-31" } : {}),
+      category: t.name === "Enterprise" ? "custom" : undefined,
+      url: CANONICAL,
+    };
+  });
+  const software = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "SeisMind",
+    applicationCategory: "Seismic interpretation & reservoir characterization software",
+    operatingSystem: "Windows",
+    description:
+      "Windows desktop application for seismic interpretation, well-to-seismic tie, and machine-learning reservoir characterization. Exposes a local MCP server so an AI coding agent can operate it in plain English; all data stays on the user's machine.",
+    url: CANONICAL,
+    downloadUrl: downloads.free,
+    softwareHelp: "https://ameyem.com/llms.txt",
+    publisher: {
+      "@type": "Organization",
+      name: "Ameyem Geo Solutions",
+      url: "https://ameyem.com",
+    },
+    offers: { "@type": "AggregateOffer", lowPrice: "0", highPrice: "10000", priceCurrency: "USD", offers },
+  };
+  const faq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
+  return [software, faq];
+}
+
 export default function SeisMind() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
+    <>
+      <Seo
+        title="SeisMind — AI-native seismic interpretation & ML reservoir characterization"
+        description="Windows desktop app for seismic interpretation, well-to-seismic tie, and ML reservoir characterization. Drive it with your AI agent via a local MCP server — SEG-Y, LAS, ZMAP, Petrel. Free edition available."
+        canonical={CANONICAL}
+        type="product"
+        jsonLd={buildJsonLd()}
+      />
     <div className="min-h-screen flex flex-col">
       <Navigation />
 
@@ -777,5 +834,6 @@ export default function SeisMind() {
 
       <Footer />
     </div>
+    </>
   );
 }

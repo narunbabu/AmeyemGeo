@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# AI-agent product brief (plain text): https://ameyem.com/llms.txt
+Sitemap: https://ameyem.com/sitemap.xml

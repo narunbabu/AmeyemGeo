@@ -6,19 +6,57 @@
     <title>AMEYEM Geo Solutions - Accelerating Geoscience with AI & Expert Insight</title>
     <meta name="description" content="Leading geoscience software, AI/ML services, and consulting for Oil & Gas industry. Expert interpretation, custom tools, and training solutions.">
     
-    <!-- Open Graph tags -->
+    <link rel="canonical" href="https://ameyem.com/">
+
+    <!-- Open Graph tags (site defaults; per-page pages override via react-helmet) -->
+    <meta property="og:site_name" content="Ameyem Geo Solutions">
     <meta property="og:title" content="AMEYEM Geo Solutions - Accelerating Geoscience with AI & Expert Insight">
     <meta property="og:description" content="Leading geoscience software, AI/ML services, and consulting for Oil & Gas industry. Expert interpretation, custom tools, and training solutions.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ameyem.com">
-    
+    <meta property="og:image" content="https://ameyem.com/og-default.png">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AMEYEM Geo Solutions - Accelerating Geoscience with AI & Expert Insight">
+    <meta name="twitter:description" content="Geoscience software, AI/ML services, and consulting for Oil & Gas. Home of SeisMind — the AI-native seismic interpretation workstation.">
+
+    <!-- Organization structured data (site-wide) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Ameyem Geo Solutions",
+      "url": "https://ameyem.com",
+      "description": "Geoscience software, AI/ML services, and consulting for the Oil & Gas industry. Maker of SeisMind, an AI-native seismic interpretation and reservoir-characterization desktop workstation.",
+      "makesOffer": { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "SeisMind", "operatingSystem": "Windows", "applicationCategory": "Seismic interpretation software", "url": "https://ameyem.com/products/seismind" } }
+    }
+    </script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Fallback for non-JS readers (crawlers, link scrapers, AI fetchers).
+           React replaces this on mount. Full machine-readable brief: /llms.txt -->
+      <noscript>
+        <h1>Ameyem Geo Solutions</h1>
+        <p>Geoscience software, AI/ML services, and consulting for the Oil &amp; Gas industry.</p>
+        <h2>SeisMind — AI-native seismic interpretation workstation</h2>
+        <p>
+          SeisMind is a Windows desktop application for seismic interpretation,
+          well-to-seismic tie, and machine-learning reservoir characterization. It exposes
+          a local MCP server so an AI coding agent (Claude Code, Codex, opencode) can operate
+          it in plain English; all data stays on your machine. Reads SEG-Y, LAS, ZMAP, and
+          Petrel ASCII. Free edition available; paid tiers Go, Plus, Pro, and Enterprise.
+          See <a href="https://ameyem.com/products/seismind">the product page</a> or the
+          plain-text brief at <a href="https://ameyem.com/llms.txt">/llms.txt</a>.
+        </p>
+      </noscript>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
