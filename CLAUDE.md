@@ -164,10 +164,21 @@ pnpm build && pnpm check && npx playwright test
    git pull origin main
    pnpm install --frozen-lockfile
    pnpm build
-   pnpm db:push
-   pm2 start dist/index.js --name ameyem-portal
-   # Configure Nginx reverse proxy for ameyem.com → localhost:5000
+   pnpm prerender          # REQUIRED: writes dist/public/<route>.html + OG images.
+                           # Skipping it reverts marketing pages to the empty SPA
+                           # shell (invisible to crawlers/LLMs). Fail-soft: if the
+                           # browser is missing, run `pnpm exec playwright install
+                           # chromium` once. See scripts/prerender.mjs.
+   sudo cp -r dist/public/* /var/www/ameyem.com/public/   # static site (nginx root)
+   pm2 restart ameyem-portal --update-env                 # API backend (port 5050)
    ```
+   Runtime facts (already configured, do not regress):
+   - Backend runs as pm2 app `ameyem-portal` on **PORT=5050** (5000 is taken by
+     chittibadi); env incl. LEAD_WEBHOOK_URL lives in `ecosystem.config.cjs` (chmod 600).
+   - nginx serves the static site from `/var/www/ameyem.com/public` and proxies
+     non-PHP `/api/*` → `127.0.0.1:5050`. The `location /` try_files MUST be
+     `try_files $uri $uri.html $uri/ /index.html;` so prerendered `<route>.html`
+     is served at the exact URL (no trailing-slash redirect that would break Wouter).
 5. SMA runs health check: `curl https://ameyem.com`
 6. **Never deploy directly from this project pane**
 
