@@ -364,6 +364,7 @@ export default function SeisMind() {
         title="SeisMind — AI-native seismic interpretation & ML reservoir characterization"
         description="Windows desktop app for seismic interpretation, well-to-seismic tie, and ML reservoir characterization. Drive it with your AI agent via a local MCP server — SEG-Y, LAS, ZMAP, Petrel. Free edition available."
         canonical={CANONICAL}
+        image="https://ameyem.com/og-seismind.png"
         type="product"
         jsonLd={buildJsonLd()}
       />
